@@ -116,6 +116,7 @@
   "pypa": ["https://www.pypa.io/en/latest/", null],
   "pypug": ["https://packaging.python.org/", null],
   "pypy": ["https://pypy.readthedocs.io/en/latest/", null],
+  "pyqtgraph": ["https://pyqtgraph.readthedocs.io/en/latest/", null],
   "pyro": ["https://docs.pyro.ai/en/stable/", null],
   "pytest": ["https://pytest.org/en/stable/", null],
   "python": ["https://docs.python.org/3/", null],
