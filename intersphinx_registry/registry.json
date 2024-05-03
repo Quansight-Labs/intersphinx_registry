@@ -48,7 +48,7 @@
   "jax": ["https://jax.readthedocs.io/en/latest/", null],
   "jedi": ["https://jedi.readthedocs.io/en/latest/", null],
   "jinja": ["http://jinja.pocoo.org/docs", null],
-  "jupyter": ["https://jupyter.readthedocs.io/en/latest", null],
+  "jupyter": ["https://jupyter.readthedocs.io/en/latest/", null],
   "jupyter-server": ["https://jupyter-server.readthedocs.io/en/stable/", null],
   "jupyter_core": ["https://jupyter-core.readthedocs.io/en/stable/", null],
   "jupyterbook": ["https://jupyterbook.org/", null],
@@ -93,7 +93,6 @@
   "pipenv": ["https://pipenv.pypa.io/en/latest/", null],
   "piwheels": ["https://piwheels.readthedocs.io/en/latest/", null],
   "pluggy": ["https://pluggy.readthedocs.io/en/stable", null],
-  "poliastro": ["https://docs.poliastro.space/en/v0.15.2/", null],
   "prompt_toolkit": [
     "https://python-prompt-toolkit.readthedocs.io/en/stable/",
     null
@@ -157,6 +156,6 @@
   "writethedocs": ["https://www.writethedocs.org/", null],
   "xarray": ["https://docs.xarray.dev/en/stable/", null],
   "xdoctest": ["https://xdoctest.readthedocs.io/en/latest/", null],
-  "z2jh": ["https://zero-to-jupyterhub.readthedocs.io/en/latest/", null],
+  "z2jh": ["https://z2jh.jupyter.org/en/latest/", null],
   "zarr": ["https://zarr.readthedocs.io/en/latest/", null]
 }

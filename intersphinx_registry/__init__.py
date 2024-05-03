@@ -18,6 +18,4 @@ def get_intersphinx_mapping() -> Dict[str, Tuple[str, str]]:
 
     For conveneience, the return dict is a copy so should be ok to mutate
     """
-    return json.loads(registry_file.read_bytes())
-
-
+    return {k: tuple(v) for (k, v) in json.loads(registry_file.read_bytes()).items()}
