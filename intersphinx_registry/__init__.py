@@ -36,5 +36,7 @@ def get_intersphinx_mapping(
     if only is None:
         return mapping
     else:
-        assert len(set(only) - set(mapping.keys())) == 0
+        missing = set(only) - set(mapping)
+        if missing:
+            raise ValueError(f"Missing libraries in 'only': {repr(sorted(missing))}")
         return {k: v for k, v in mapping.items() if k in only}
