@@ -10,5 +10,13 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 readme = "README.md"
 
+[project.optional-dependencies]
+tests = ["pytest>=7.0", "pytest-xdist", "requests"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+# run @parametrize tests in parallel as some use requests.
+addopts = "-n auto"
+
 [project.urls]
 Home = "https://github.com/Carreau/intersphinx_registry"

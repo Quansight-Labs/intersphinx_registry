@@ -3,10 +3,10 @@ import pytest
 import requests
 
 MAPPING = get_intersphinx_mapping()
-keys = MAPPING.keys()
+keys = set(MAPPING.keys())
 
 
-@pytest.mark.parametrize("key", set(keys) - {"jinja"})
+@pytest.mark.parametrize("key", list(sorted(keys - {"jinja"})))
 def test_format(key: str):
     assert isinstance(key, str)
     for v in MAPPING[key]:
@@ -18,7 +18,7 @@ def test_format(key: str):
         requests.head(v + "objects.inv").raise_for_status()
 
 
-@pytest.mark.parametrize("key", set(keys))
+@pytest.mark.parametrize("key", list(sorted(keys)))
 def test_reach_objects_inv(key: str):
     for v in MAPPING[key]:
         if v is None:
