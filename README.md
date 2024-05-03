@@ -4,7 +4,7 @@ A simple utility package that provide default inter sphinx mapping for a large c
 
 Usage in `conf.py`
 
-```
+```python
 from intersphinx_registry import get_intersphinx_mapping
 
 # ...

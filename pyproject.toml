@@ -8,6 +8,7 @@ authors = [{name = "Matthias Bussonnier", email = "bussonniermatthias@gmail.com"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
+readme = "README.md"
 
 [project.urls]
 Home = "https://github.com/Carreau/intersphinx_registry"
