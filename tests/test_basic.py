@@ -24,3 +24,8 @@ def test_reach_objects_inv(key: str):
         if v is None:
             continue
         requests.head(v + "objects.inv").raise_for_status()
+
+
+def test_bad():
+    with pytest.raises(ValueError, match="Missing libraries"):
+        get_intersphinx_mapping(only={"-nonexistent-"})
