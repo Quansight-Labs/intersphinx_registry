@@ -83,7 +83,7 @@
   "neps": ["https://numpy.org/neps/", null],
   "networkx": ["https://networkx.org/documentation/stable/", null],
   "nibabel": ["https://nipy.org/nibabel", null],
-  "nilearn": ["http://nilearn.github.io/stable", null],
+  "nilearn": ["https://nilearn.github.io/stable", null],
   "notebook": ["https://jupyter-notebook.readthedocs.io/en/stable/", null],
   "nox": ["https://nox.thea.codes/en/latest/", null],
   "numba": ["https://numba.readthedocs.io/en/latest", null],
