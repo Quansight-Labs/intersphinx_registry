@@ -1,6 +1,7 @@
 """
 This package provides convenient utilities and data to write a sphinx config file.
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -24,8 +25,9 @@ def get_intersphinx_mapping(
     ----------
     only: Set of Str
         list of libraries to include.
-        This is purely for optimisation as sphinx may download and load all the `objects.inv` listed,
-        in get_intersphinx_mapping. This let users reduce the number of requested files.
+        This is purely for optimisation as sphinx may download and load all the
+        `objects.inv` listed, in get_intersphinx_mapping. This let users reduce
+        the number of requested files.
     """
     mapping = cast(
         Dict[str, Tuple[str, Optional[str]]],
