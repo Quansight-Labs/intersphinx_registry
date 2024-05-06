@@ -8,7 +8,9 @@ from pathlib import Path
 import json
 from typing import Dict, Tuple, Set, Optional, cast
 
-__version__ = "0.0.3"
+# I'm thinking of going YEAR.month.releasenumber
+
+__version__ = "0.0.4"
 
 registry_file = Path(__file__).parent / "registry.json"
 
