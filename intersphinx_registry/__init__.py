@@ -16,20 +16,23 @@ registry_file = Path(__file__).parent / "registry.json"
 
 
 def get_intersphinx_mapping(
-    *, only: Optional[Set[str]] = None
+    *, only: Optional[Set[str]]
 ) -> Dict[str, Tuple[str, Optional[str]]]:
     """
     Return values of intersphinx_mapping for sphinx configuration.
 
-    For convenience, the return dict is a copy so should be ok to mutate
+    For convenience, the returned dictionary is a copy so should be ok to
+    mutate.
 
     Parameters
     ----------
-    only: Set of Str
-        list of libraries to include.
-        This is purely for optimisation as sphinx may download and load all the
-        `objects.inv` listed, in get_intersphinx_mapping. This let users reduce
-        the number of requested files.
+    only: Set of Str or None
+        Libraries to include.
+
+        Sphinx will download and load all the `objects.inv` listed in
+        intersphinx_mapping.  To get all known libraries explicitly pass
+        `None`.
+
     """
     mapping = cast(
         Dict[str, Tuple[str, Optional[str]]],
