@@ -146,7 +146,7 @@
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
   "sphinx-gallery": ["https://sphinx-gallery.github.io/stable/", null],
   "sphinx_automodapi": ["https://sphinx-automodapi.readthedocs.io/en/stable/", null],
-  "sqlalchemy": ["https://docs.sqlalchemy.org/en/20/", null],
+  "sqlalchemy": ["https://docs.sqlalchemy.org/en/latest/", null],
   "statsmodels": ["https://www.statsmodels.org/stable/", null],
   "sympy": ["https://docs.sympy.org/latest/", null],
   "tljh": ["https://tljh.jupyter.org/en/latest/", null],
