@@ -14,9 +14,15 @@ __version__ = "0.0.4"
 
 registry_file = Path(__file__).parent / "registry.json"
 
+def _get_all_mappings() ->  Dict[str, Tuple[str, Optional[str]]]:
+    return cast(
+        Dict[str, Tuple[str, Optional[str]]],
+        {k: tuple(v) for (k, v) in json.loads(registry_file.read_bytes()).items()},
+    )
+
 
 def get_intersphinx_mapping(
-    *, only: Optional[Set[str]]
+    *, packages: Set[str] = set()
 ) -> Dict[str, Tuple[str, Optional[str]]]:
     """
     Return values of intersphinx_mapping for sphinx configuration.
@@ -26,22 +32,19 @@ def get_intersphinx_mapping(
 
     Parameters
     ----------
-    only: Set of Str or None
+    packages: Set of Str
         Libraries to include.
 
-        Sphinx will download and load all the `objects.inv` listed in
-        intersphinx_mapping.  To get all known libraries explicitly pass
-        `None`.
+        Sphinx will download and load all the `objects.inv` for listed 
+        packages. Getting all mappings is discourage as it will download all
+        the `object.inv` which can be a non-negligible amount of data.
 
     """
-    mapping = cast(
-        Dict[str, Tuple[str, Optional[str]]],
-        {k: tuple(v) for (k, v) in json.loads(registry_file.read_bytes()).items()},
-    )
-    if only is None:
-        return mapping
-    else:
-        missing = set(only) - set(mapping)
-        if missing:
-            raise ValueError(f"Missing libraries in 'only': {repr(sorted(missing))}")
-        return {k: v for k, v in mapping.items() if k in only}
+    if len(packages) == 0:
+        raise ValueError('You now must explicitly give a list of package to download inter sphinx from: get_intersphinx_mapping(["IPython", "numpy",...]).')
+
+    mapping = _get_all_mappings()
+    missing = set(packages) - set(mapping)
+    if missing:
+        raise ValueError(f"Missing libraries in 'packages': {repr(sorted(missing))}")
+    return {k: v for k, v in mapping.items() if k in packages}
