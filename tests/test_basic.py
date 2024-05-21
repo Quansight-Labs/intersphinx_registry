@@ -1,8 +1,8 @@
-from intersphinx_registry import get_intersphinx_mapping
+from intersphinx_registry import _get_all_mappings, get_intersphinx_mapping
 import pytest
 import requests
 
-MAPPING = get_intersphinx_mapping()
+MAPPING = _get_all_mappings()
 keys = set(MAPPING.keys())
 
 
@@ -27,5 +27,15 @@ def test_reach_objects_inv(key: str):
 
 
 def test_bad():
-    with pytest.raises(ValueError, match="Missing libraries"):
-        get_intersphinx_mapping(only={"-nonexistent-"})
+    with pytest.raises(ValueError, match="Some libraries in"):
+        get_intersphinx_mapping(packages={"-nonexistent-"})
+
+
+@pytest.mark.parametrize('key', sorted(keys))
+def test_lower_case(key):
+    """
+    We agreed that all keys in the mapping should be lower case
+    """
+    assert key == key.lower(), 'expecting all keys to be lowercase'
+
+
