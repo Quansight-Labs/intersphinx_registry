@@ -35,4 +35,4 @@ link only to _stable_ package, not dev versions.
 ## A package is missing !
 
 We can't do all packages, but if you think a package is widely used and missing,
-please send an PR.
+please send a PR.

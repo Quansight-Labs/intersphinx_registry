@@ -41,10 +41,10 @@ def get_intersphinx_mapping(
 
     """
     if len(packages) == 0:
-        raise ValueError('You now must explicitly give a list of package to download inter sphinx from: get_intersphinx_mapping(["IPython", "numpy",...]).')
+        raise ValueError('You must explicitly give a list of packages for which to download intersphinx inventories: get_intersphinx_mapping(packages=["IPython", "numpy",...]).')
 
     mapping = _get_all_mappings()
     missing = set(packages) - set(mapping)
     if missing:
-        raise ValueError(f"Missing libraries in 'packages': {repr(sorted(missing))}")
+        raise ValueError(f"Some libraries in 'packages' not found in registry: {repr(sorted(missing))}")
     return {k: v for k, v in mapping.items() if k in packages}
