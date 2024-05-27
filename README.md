@@ -8,8 +8,9 @@ Usage in `conf.py`
 from intersphinx_registry import get_intersphinx_mapping
 
 # ...
-
-intersphinx_mapping = get_intersphinx_mapping()
+intersphinx_mapping = get_intersphinx_mapping(
+    only={"ipython", "matplotlib", "pandas", "python"}
+)
 intersphinx_mapping.update({
     'overwrite': ('<url>', None),
     'my-package' : ('<url>', None),
@@ -17,7 +18,7 @@ intersphinx_mapping.update({
 ```
 
 
-## Why ? 
+## Why ?
 
 Sometime packages docs move and it's hard to keep track of. We _try_ to keep the
 registry up to date, so yo do not have to ask yourself questions and update your
@@ -34,14 +35,4 @@ link only to _stable_ package, not dev versions.
 ## A package is missing !
 
 We can't do all packages, but if you think a package is widely used and missing,
-please send an PR. 
-
-
-
-
-
-
-
-
-
-
+please send a PR.

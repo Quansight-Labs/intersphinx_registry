@@ -1,6 +1,6 @@
 {
-  "Pillow": ["https://pillow.readthedocs.io/en/stable/", null],
-  "PyPUG": ["https://packaging.python.org/en/latest/", null],
+  "pillow": ["https://pillow.readthedocs.io/en/stable/", null],
+  "pypug": ["https://packaging.python.org/en/latest/", null],
   "anndata": ["https://anndata.readthedocs.io/en/stable/", null],
   "asdf-astropy": ["https://asdf-astropy.readthedocs.io/en/latest/", null],
   "astropy-dev": ["https://docs.astropy.org/en/latest/", null],
