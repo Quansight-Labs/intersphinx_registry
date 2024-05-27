@@ -9,7 +9,7 @@ from intersphinx_registry import get_intersphinx_mapping
 
 # ...
 intersphinx_mapping = get_intersphinx_mapping(
-    only={"ipython", "matplotlib", "pandas", "python"}
+    packages={"ipython", "matplotlib", "pandas", "python"}
 )
 intersphinx_mapping.update({
     'overwrite': ('<url>', None),
