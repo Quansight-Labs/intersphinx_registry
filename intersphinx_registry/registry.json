@@ -27,8 +27,8 @@
   "distlib": ["https://distlib.readthedocs.io/en/latest/", null],
   "distributed": ["https://distributed.dask.org/en/stable/", null],
   "django": [
-    "https://docs.djangoproject.com/en/2.2/",
-    "https://docs.djangoproject.com/en/2.2/_objects/"
+    "https://docs.djangoproject.com/en/stable/",
+    "https://docs.djangoproject.com/en/stable/_objects/"
   ],
   "dlpack": ["https://dmlc.github.io/dlpack/latest/", null],
   "flax": ["https://flax.readthedocs.io/en/latest/", null],
@@ -147,7 +147,10 @@
   "sparse": ["https://sparse.pydata.org/en/latest/", null],
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
   "sphinx-gallery": ["https://sphinx-gallery.github.io/stable/", null],
-  "sphinx_automodapi": ["https://sphinx-automodapi.readthedocs.io/en/stable/", null],
+  "sphinx_automodapi": [
+    "https://sphinx-automodapi.readthedocs.io/en/stable/",
+    null
+  ],
   "sqlalchemy": ["https://docs.sqlalchemy.org/en/latest/", null],
   "statsmodels": ["https://www.statsmodels.org/stable/", null],
   "sympy": ["https://docs.sympy.org/latest/", null],

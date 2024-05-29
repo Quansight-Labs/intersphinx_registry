@@ -9,13 +9,19 @@ keys = set(MAPPING.keys())
 @pytest.mark.parametrize("key", list(sorted(keys - {"jinja"})))
 def test_format(key: str):
     assert isinstance(key, str)
-    for v in MAPPING[key]:
-        if v is None:
-            continue
-        assert v.startswith("https://"), v
-        assert v.endswith("/"), v
-        assert "readthedocs.org" not in v
-        requests.head(v + "objects.inv").raise_for_status()
+    url, obj = MAPPING[key]
+    assert url.startswith("https://"), url
+    assert url.endswith("/"), url
+    assert "readthedocs.org" not in url, "should be readthedocs.io not org"
+
+    if obj is None:
+        requests.head(url + "objects.inv", allow_redirects=True).raise_for_status()
+    else:
+        assert obj.startswith("https://"), obj
+        assert obj.endswith("/"), obj
+        assert "readthedocs.org" not in obj
+        assert obj.startswith(url)
+        requests.head(obj, allow_redirects=True).raise_for_status()
 
 
 @pytest.mark.parametrize("key", list(sorted(keys)))
