@@ -11,12 +11,21 @@ dynamic = ["version", "description"]
 readme = "README.md"
 
 [project.optional-dependencies]
-tests = ["pytest>=7.0", "pytest-xdist", "requests"]
+tests = ["pytest>=7.0", "pytest-xdist", "requests", "mypy", "types-requests"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-# run @parametrize tests in parallel as some use requests.
-addopts = "-n auto"
+# -n auto:
+#    run @parametrize tests in parallel as some use requests.
+#    requires ptest x-dist
+addopts = ["-n","auto", "--strict-config", "--strict-markers", "-ra"]
+filterwarnings = ["error"]
+log_cli_level = "INFO"
+testpaths = ["tests"]
+xfail_strict = true
+
+[tool.mypy]
+files = ["intersphinx_registry", "tests"]
 
 [project.urls]
-Home = "https://github.com/Carreau/intersphinx_registry"
+Home = "https://github.com/Quansight-labs/intersphinx_registry"
