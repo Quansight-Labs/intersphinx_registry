@@ -124,7 +124,7 @@
   "python": ["https://docs.python.org/3/", null],
   "python-guide": ["https://docs.python-guide.org/", null],
   "pytorch_lightning": ["https://lightning.ai/docs/pytorch/stable/", null],
-  "pyvista": ["https://docs.pyvista.org/version/stable/", null],
+  "pyvista": ["https://docs.pyvista.org/", null],
   "qiskit": ["https://docs.quantum.ibm.com/api/qiskit/", null],
   "qtconsole": ["https://jupyter.org/qtconsole/dev/", null],
   "readthedocs": ["https://docs.readthedocs.io/en/stable/", null],
