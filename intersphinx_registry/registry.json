@@ -142,6 +142,7 @@
   "six": ["https://six.readthedocs.io/", null],
   "skimage": ["https://scikit-image.org/docs/stable/", null],
   "sklearn": ["https://scikit-learn.org/stable/", null],
+  "sounddevice": ["https://python-sounddevice.readthedocs.io/", null],
   "spack": ["https://spack.readthedocs.io/en/latest/", null],
   "sparse": ["https://sparse.pydata.org/en/latest/", null],
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
