@@ -5,6 +5,10 @@ import requests
 MAPPING = _get_all_mappings()
 keys = set(MAPPING.keys())
 
+TIMEOUT = 5  # sec
+
+# click does return a 301 instead of a 30
+CLICK_WRONG_301 = 301
 
 @pytest.mark.parametrize("key", list(sorted(keys - {"jinja"})))
 def test_format(key: str):
@@ -21,7 +25,9 @@ def test_format(key: str):
         assert obj.endswith("/"), obj
         assert "readthedocs.org" not in obj
         assert obj.startswith(url)
-        requests.head(obj, allow_redirects=True).raise_for_status()
+        res = requests.head(obj, allow_redirects=True, timeout=TIMEOUT)
+        res.raise_for_status()
+        assert res.status_code in (200, 302, CLICK_WRONG_301)
 
 
 @pytest.mark.parametrize("key", list(sorted(keys)))
@@ -29,7 +35,10 @@ def test_reach_objects_inv(key: str):
     for v in MAPPING[key]:
         if v is None:
             continue
-        requests.head(v + "objects.inv").raise_for_status()
+        res = requests.head(v + "objects.inv", timeout=TIMEOUT)
+        res.raise_for_status()
+        assert res.status_code in (200, 302, CLICK_WRONG_301)
+
 
 
 def test_bad():

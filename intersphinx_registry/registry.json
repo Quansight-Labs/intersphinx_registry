@@ -46,7 +46,7 @@
   "ipywidgets": ["https://ipywidgets.readthedocs.io/en/latest/", null],
   "jax": ["https://jax.readthedocs.io/en/latest/", null],
   "jedi": ["https://jedi.readthedocs.io/en/latest/", null],
-  "jinja": ["http://jinja.pocoo.org/docs/", null],
+  "jinja": ["https://jinja.palletsprojects.com/", null],
   "joblib": ["https://joblib.readthedocs.io/en/latest/", null],
   "jupyter": ["https://docs.jupyter.org/en/latest/", null],
   "jupyter-server": ["https://jupyter-server.readthedocs.io/en/stable/", null],
