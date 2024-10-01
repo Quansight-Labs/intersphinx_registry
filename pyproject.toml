@@ -18,7 +18,7 @@ minversion = "7.0"
 # -n auto:
 #    run @parametrize tests in parallel as some use requests.
 #    requires ptest x-dist
-addopts = ["-n","auto", "--strict-config", "--strict-markers", "-ra"]
+addopts = ["-n","auto", "--strict-config", "--strict-markers", "-ra",'--durations=10']
 filterwarnings = ["error"]
 log_cli_level = "INFO"
 testpaths = ["tests"]
