@@ -65,6 +65,7 @@
   "matplotlib": ["https://matplotlib.org/stable/", null],
   "meson-python": ["https://meson-python.readthedocs.io/en/stable/", null],
   "mne": ["https://mne.tools/stable/", null],
+  "mne_bids": ["https://mne.tools/mne-bids/stable/", null],
   "mne_icalabel": ["https://mne.tools/mne-icalabel/stable/", null],
   "mne_lsl": ["https://mne.tools/mne-lsl/stable/", null],
   "monkeytype": ["https://monkeytype.readthedocs.io/en/latest/", null],
