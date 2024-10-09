@@ -7,13 +7,30 @@ on:  # yamllint disable-line rule:truthy
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  # Run at 04:00 UTC every Monday
+  schedule:
+    - cron: "0 4 * * 1"
 
 permissions:
   contents: read
 
 jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          pip install pip --upgrade
+          pip install -ve '.[tests]'
+          pip install mypy sphinx
+      - run:
+          mypy
+
   pytest:
-    continue-on-error: true
+    needs: [style]
     runs-on: ${{ matrix.os }}
     defaults:
       run:
@@ -31,7 +48,23 @@ jobs:
           pip install pip --upgrade
           pip install -ve '.[tests]'
           pip install mypy sphinx
-      - run:
-          pytest tests
-      - run:
-          mypy
+          pip install pytest-reportlog
+
+      - name: Test
+        id: pytest
+        run:
+          pytest tests --report-log pytest-log.jsonl
+
+      - run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
+      - uses: xarray-contrib/issue-from-pytest-log@v1.3.0
+        if: |
+          failure()
+          && steps.pytest.outcome == 'failure'
+          && github.repository == 'Quansight-Labs/intersphinx_registry'
+          && github.event_name == 'schedule'
+        with:
+          log-path: pytest-log.jsonl
+          issue-title: ⚠️ CI failure at ${{ env.NOW }} ⚠️
+          # issue-label: 'bug'
+
