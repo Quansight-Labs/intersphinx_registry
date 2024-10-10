@@ -41,17 +41,14 @@ def test_reach_objects_inv(key: str):
         assert res.status_code in (200, 302, CLICK_WRONG_301)
 
 
-
 def test_bad():
     with pytest.raises(ValueError, match="Some libraries in"):
         get_intersphinx_mapping(packages={"-nonexistent-"})
 
 
-@pytest.mark.parametrize('key', sorted(keys))
+@pytest.mark.parametrize("key", sorted(keys))
 def test_lower_case(key):
     """
     We agreed that all keys in the mapping should be lower case
     """
-    assert key == key.lower(), 'expecting all keys to be lowercase'
-
-
+    assert key == key.lower(), "expecting all keys to be lowercase"
