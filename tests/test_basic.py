@@ -4,14 +4,15 @@ import pytest
 import requests
 
 MAPPING = _get_all_mappings()
-keys = set(MAPPING.keys())
+keys = set(MAPPING)
 
 TIMEOUT = 5  # sec
 
 # click does return a 301 instead of a 30
 CLICK_WRONG_301 = 301
 
-@pytest.mark.parametrize("key", list(sorted(keys - {"jinja"})))
+
+@pytest.mark.parametrize("key", sorted(keys - {"jinja"}))
 def test_format(key: str):
     assert isinstance(key, str)
     url, obj = MAPPING[key]
