@@ -148,7 +148,20 @@
   "spack": ["https://spack.readthedocs.io/en/latest", null],
   "sparse": ["https://sparse.pydata.org/en/latest/", null],
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
+  "sphinx-copybutton": [
+    "https://sphinx-copybutton.readthedocs.io/en/latest/",
+    null
+  ],
+  "sphinx-design": [
+    "https://sphinx-design.readthedocs.io/en/pydata-theme/",
+    null
+  ],
   "sphinx-gallery": ["https://sphinx-gallery.github.io/stable/", null],
+  "sphinx-material": ["https://bashtage.github.io/sphinx-material/", null],
+  "sphinx-togglebutton": [
+    "https://sphinx-togglebutton.readthedocs.io/en/latest/",
+    null
+  ],
   "sphinx_automodapi": [
     "https://sphinx-automodapi.readthedocs.io/en/stable",
     null
