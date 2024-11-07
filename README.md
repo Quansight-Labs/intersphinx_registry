@@ -17,6 +17,21 @@ intersphinx_mapping.update({
 })
 ```
 
+## quick lookup
+
+You can use the following to lookup target/webpages of various packages.
+
+```
+$ python -m intersphinx_registry.lookup ipython | grep whatsnew7
+    whatsnew700                              IPython 7.0.0                           : whatsnew/version7.html#whatsnew700
+    whatsnew710                              IPython 7.1.0                           : whatsnew/version7.html#whatsnew710
+    whatsnew720                              IPython 7.2.0                           : whatsnew/version7.html#whatsnew720
+    whatsnew730                              IPython 7.3.0                           : whatsnew/version7.html#whatsnew730
+    whatsnew740                              IPython 7.4.0                           : whatsnew/version7.html#whatsnew740
+    whatsnew750                              IPython 7.5.0                           : whatsnew/version7.html#whatsnew750
+    whatsnew760                              IPython 7.6.0                           : whatsnew/version7.html#whatsnew760
+```
+
 
 ## Why ?
 
