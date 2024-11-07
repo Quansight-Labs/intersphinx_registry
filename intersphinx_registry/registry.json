@@ -148,7 +148,7 @@
   "spack": ["https://spack.readthedocs.io/en/latest", null],
   "sparse": ["https://sparse.pydata.org/en/latest/", null],
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
-  "sphinx-copy-button": [
+  "sphinx-copybutton": [
     "https://sphinx-copybutton.readthedocs.io/en/latest/",
     null
   ],
