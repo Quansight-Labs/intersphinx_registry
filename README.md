@@ -21,16 +21,34 @@ intersphinx_mapping.update({
 
 You can use the following to lookup target/webpages of various packages.
 
+Call without arguments to get help:
+
 ```
-$ python -m intersphinx_registry.lookup ipython | grep whatsnew7
-    whatsnew700                              IPython 7.0.0                           : whatsnew/version7.html#whatsnew700
-    whatsnew710                              IPython 7.1.0                           : whatsnew/version7.html#whatsnew710
-    whatsnew720                              IPython 7.2.0                           : whatsnew/version7.html#whatsnew720
-    whatsnew730                              IPython 7.3.0                           : whatsnew/version7.html#whatsnew730
-    whatsnew740                              IPython 7.4.0                           : whatsnew/version7.html#whatsnew740
-    whatsnew750                              IPython 7.5.0                           : whatsnew/version7.html#whatsnew750
-    whatsnew760                              IPython 7.6.0                           : whatsnew/version7.html#whatsnew760
+$ python -m intersphinx_registry.lookup
+
+    Usage: python -m intersphinx_registry.lookup <package>[,package] [search_term]
+
+    Example:
+
+    $ python -m intersphinx_registry.lookup numpy,scipy array
+    $ python -m intersphinx_registry.lookup ipython formatters.html
+
 ```
+
+You can search multiple packages as once.
+
+```
+$ python -m intersphinx_registry.lookup numpy,scipy Universal
+std:label ufuncs                             NumPy 2.1    'Universal functions (ufunc)'                         https://numpy.org/doc/stable/reference/ufuncs.html#ufuncs
+std:label ufuncs-basics                      NumPy 2.1    'Universal functions (ufunc) basics'                  https://numpy.org/doc/stable/user/basics.ufuncs.html#ufuncs-basics
+std:label ufuncs-internals                   NumPy 2.1    'Universal functions'                                 https://numpy.org/doc/stable/dev/internals.code-explanations.html#ufuncs-internals
+std:doc   reference/ufuncs                   NumPy 2.1    'Universal functions (ufunc)'                         https://numpy.org/doc/stable/reference/ufuncs.html
+std:doc   user/basics.ufuncs                 NumPy 2.1    'Universal functions (ufunc) basics'                  https://numpy.org/doc/stable/user/basics.ufuncs.html
+std:label non-uniform-random-number-sampling SciPy 1.14.1 'Universal Non-Uniform Random Number Sampling in SciPy' https://docs.scipy.org/doc/scipy/tutorial/stats/sampling.html#non-uniform-random-number-sampling
+std:doc   tutorial/stats/sampling            SciPy 1.14.1 'Universal Non-Uniform Random Number Sampling in SciPy' https://docs.scipy.org/doc/scipy/tutorial/stats/sampling.html
+```
+
+Warning, there is no cache, it downloads the inventory of each mentioned package every time.
 
 
 ## Why ?
