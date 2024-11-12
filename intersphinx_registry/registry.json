@@ -16,7 +16,7 @@
   "cffi": ["https://cffi.readthedocs.io/en/latest/", null],
   "click": ["https://click.palletsprojects.com/", null],
   "conda": ["https://conda.io/en/latest/", null],
-  "ConfigSpace": ["https://automl.github.io/ConfigSpace/latest/", null],
+  "configspace": ["https://automl.github.io/ConfigSpace/latest/", null],
   "cycler": ["https://matplotlib.org/cycler/", null],
   "cython": ["https://docs.cython.org/en/latest/", null],
   "dask": ["https://docs.dask.org/en/latest/", null],
