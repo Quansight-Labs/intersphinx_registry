@@ -5,8 +5,14 @@
   "asv": ["https://asv.readthedocs.io/en/stable/", null],
   "asyncssh": ["https://asyncssh.readthedocs.io/en/latest/", null],
   "attrs": ["https://www.attrs.org/en/stable/", null],
-  "azure-core": ["https://azuresdkdocs.blob.core.windows.net/$web/python/azure-core/latest/", null],
-  "azure-identity": ["https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/latest/", null],
+  "azure-core": [
+    "https://azuresdkdocs.blob.core.windows.net/$web/python/azure-core/latest/",
+    null
+  ],
+  "azure-identity": [
+    "https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/latest/",
+    null
+  ],
   "bhub": ["https://binderhub.readthedocs.io/en/latest/", null],
   "bokeh": ["https://docs.bokeh.org/en/latest/", null],
   "boltons": ["https://boltons.readthedocs.io/en/latest/", null],
@@ -38,6 +44,7 @@
   "geopandas": ["https://geopandas.org/en/stable/", null],
   "hub": ["https://jupyterhub.readthedocs.io/en/latest/", null],
   "imageio": ["https://imageio.readthedocs.io/en/stable/", null],
+  "iminuit": ["https://iminuit.readthedocs.io/en/stable/", null],
   "importlib-resources": [
     "https://importlib-resources.readthedocs.io/en/latest/",
     null
@@ -51,6 +58,7 @@
   "jedi": ["https://jedi.readthedocs.io/en/latest/", null],
   "jinja": ["https://jinja.palletsprojects.com/", null],
   "joblib": ["https://joblib.readthedocs.io/en/latest/", null],
+  "jsonpatch": ["https://python-json-patch.readthedocs.io/en/stable/", null],
   "jupyter": ["https://docs.jupyter.org/en/latest/", null],
   "jupyter-server": ["https://jupyter-server.readthedocs.io/en/stable/", null],
   "jupyter_core": ["https://jupyter-core.readthedocs.io/en/stable/", null],
@@ -182,8 +190,12 @@
   "traitlets": ["https://traitlets.readthedocs.io/en/latest/", null],
   "twine": ["https://twine.readthedocs.io/en/stable/", null],
   "typing": ["https://typing.readthedocs.io/en/latest/", null],
-  "typing_extensions": ["https://typing-extensions.readthedocs.io/en/stable/", null],
+  "typing_extensions": [
+    "https://typing-extensions.readthedocs.io/en/stable/",
+    null
+  ],
   "ubelt": ["https://ubelt.readthedocs.io/en/latest/", null],
+  "uproot": ["https://uproot.readthedocs.io/en/stable/", null],
   "urwid": ["https://urwid.org/", null],
   "virtualenv": ["https://virtualenv.pypa.io/en/stable/", null],
   "writethedocs": ["https://www.writethedocs.org/", null],
