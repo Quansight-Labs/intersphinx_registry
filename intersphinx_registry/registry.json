@@ -5,14 +5,8 @@
   "asv": ["https://asv.readthedocs.io/en/stable/", null],
   "asyncssh": ["https://asyncssh.readthedocs.io/en/latest/", null],
   "attrs": ["https://www.attrs.org/en/stable/", null],
-  "azure-core": [
-    "https://azuresdkdocs.blob.core.windows.net/$web/python/azure-core/latest/",
-    null
-  ],
-  "azure-identity": [
-    "https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/latest/",
-    null
-  ],
+  "azure-core": ["https://azuresdkdocs.blob.core.windows.net/$web/python/azure-core/latest/", null],
+  "azure-identity": ["https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/latest/", null],
   "bhub": ["https://binderhub.readthedocs.io/en/latest/", null],
   "bokeh": ["https://docs.bokeh.org/en/latest/", null],
   "boltons": ["https://boltons.readthedocs.io/en/latest/", null],
@@ -33,10 +27,7 @@
   "dipy": ["https://docs.dipy.org/stable/", null],
   "distlib": ["https://distlib.readthedocs.io/en/latest/", null],
   "distributed": ["https://distributed.dask.org/en/stable/", null],
-  "django": [
-    "https://docs.djangoproject.com/en/stable/",
-    "https://docs.djangoproject.com/en/stable/_objects/"
-  ],
+  "django": ["https://docs.djangoproject.com/en/stable/", "https://docs.djangoproject.com/en/stable/_objects/"],
   "dlpack": ["https://dmlc.github.io/dlpack/latest/", null],
   "flax": ["https://flax.readthedocs.io/en/latest/", null],
   "flexx": ["https://flexx.readthedocs.io/en/latest/", null],
@@ -45,10 +36,7 @@
   "hub": ["https://jupyterhub.readthedocs.io/en/latest/", null],
   "imageio": ["https://imageio.readthedocs.io/en/stable/", null],
   "iminuit": ["https://iminuit.readthedocs.io/en/stable/", null],
-  "importlib-resources": [
-    "https://importlib-resources.readthedocs.io/en/latest/",
-    null
-  ],
+  "importlib-resources": ["https://importlib-resources.readthedocs.io/en/latest/", null],
   "ipykernel": ["https://ipykernel.readthedocs.io/en/latest/", null],
   "ipyleaflet": ["https://ipyleaflet.readthedocs.io/en/latest/", null],
   "ipyparallel": ["https://ipyparallel.readthedocs.io/en/stable/", null],
@@ -83,10 +71,7 @@
   "mpmath": ["https://mpmath.org/doc/current/", null],
   "myst-nb": ["https://myst-nb.readthedocs.io/en/latest/", null],
   "myst-parser": ["https://myst-parser.readthedocs.io/en/latest/", null],
-  "napari_plugin_engine": [
-    "https://napari-plugin-engine.readthedocs.io/en/latest/",
-    null
-  ],
+  "napari_plugin_engine": ["https://napari-plugin-engine.readthedocs.io/en/latest/", null],
   "nbconvert": ["https://nbconvert.readthedocs.io/en/latest/", null],
   "nbformat": ["https://nbformat.readthedocs.io/en/latest/", null],
   "nbgitpuller": ["https://nbgitpuller.readthedocs.io/en/latest/", null],
@@ -115,10 +100,7 @@
   "plotly": ["https://plotly.com/python-api-reference/", null],
   "pluggy": ["https://pluggy.readthedocs.io/en/stable/", null],
   "poliastro": ["https://docs.poliastro.space/en/stable/", null],
-  "prompt_toolkit": [
-    "https://python-prompt-toolkit.readthedocs.io/en/stable/",
-    null
-  ],
+  "prompt_toolkit": ["https://python-prompt-toolkit.readthedocs.io/en/stable/", null],
   "py": ["https://pylib.readthedocs.io/en/latest/", null],
   "pyarrow": ["https://arrow.apache.org/docs/", null],
   "pybind11": ["https://pybind11.readthedocs.io/en/stable/", null],
@@ -162,24 +144,12 @@
   "spack": ["https://spack.readthedocs.io/en/latest/", null],
   "sparse": ["https://sparse.pydata.org/en/latest/", null],
   "sphinx": ["https://www.sphinx-doc.org/en/master/", null],
-  "sphinx-copybutton": [
-    "https://sphinx-copybutton.readthedocs.io/en/latest/",
-    null
-  ],
-  "sphinx-design": [
-    "https://sphinx-design.readthedocs.io/en/pydata-theme/",
-    null
-  ],
+  "sphinx-copybutton": ["https://sphinx-copybutton.readthedocs.io/en/latest/", null],
+  "sphinx-design": ["https://sphinx-design.readthedocs.io/en/pydata-theme/", null],
   "sphinx-gallery": ["https://sphinx-gallery.github.io/stable/", null],
   "sphinx-material": ["https://bashtage.github.io/sphinx-material/", null],
-  "sphinx-togglebutton": [
-    "https://sphinx-togglebutton.readthedocs.io/en/latest/",
-    null
-  ],
-  "sphinx_automodapi": [
-    "https://sphinx-automodapi.readthedocs.io/en/stable/",
-    null
-  ],
+  "sphinx-togglebutton": ["https://sphinx-togglebutton.readthedocs.io/en/latest/", null],
+  "sphinx_automodapi": ["https://sphinx-automodapi.readthedocs.io/en/stable/", null],
   "sqlalchemy": ["https://docs.sqlalchemy.org/en/latest/", null],
   "statsmodels": ["https://www.statsmodels.org/stable/", null],
   "sympy": ["https://docs.sympy.org/latest/", null],
@@ -190,10 +160,7 @@
   "traitlets": ["https://traitlets.readthedocs.io/en/latest/", null],
   "twine": ["https://twine.readthedocs.io/en/stable/", null],
   "typing": ["https://typing.readthedocs.io/en/latest/", null],
-  "typing_extensions": [
-    "https://typing-extensions.readthedocs.io/en/stable/",
-    null
-  ],
+  "typing_extensions": ["https://typing-extensions.readthedocs.io/en/stable/", null],
   "ubelt": ["https://ubelt.readthedocs.io/en/latest/", null],
   "uproot": ["https://uproot.readthedocs.io/en/stable/", null],
   "urwid": ["https://urwid.org/", null],
