@@ -25,7 +25,7 @@ jobs:
       - run: |
           pip install pip --upgrade
           pip install -ve '.[tests]'
-          pip install mypy sphinx
+          pip install mypy sphinx sphobjinv aiohttp
       - run:
           mypy
 
@@ -47,7 +47,7 @@ jobs:
       - run: |
           pip install pip --upgrade
           pip install -ve '.[tests]'
-          pip install mypy sphinx
+          pip install mypy sphinx 
           pip install pytest-reportlog
 
       - name: Test

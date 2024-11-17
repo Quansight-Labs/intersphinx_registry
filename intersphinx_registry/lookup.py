@@ -1,6 +1,6 @@
 import sys
 
-from intersphinx_registry import get_intersphinx_mapping
+from . import get_intersphinx_mapping
 from urllib.parse import urljoin
 
 from typing import Optional
@@ -8,7 +8,6 @@ from typing import Optional
 from sphinx.util.inventory import InventoryFile
 from io import BytesIO
 
-# filename = 'https://ipython.readthedocs.io/en/latest/'
 import requests
 
 if len(sys.argv) not in [2, 3]:
