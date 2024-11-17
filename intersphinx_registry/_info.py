@@ -10,7 +10,7 @@ import sys
 from urllib.parse import urljoin
 
 import aiohttp
-from sphobjinv import Inventory
+from sphobjinv import Inventory  # type: ignore
 
 from intersphinx_registry import get_intersphinx_mapping
 
