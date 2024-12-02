@@ -109,6 +109,7 @@
   "pygraphviz": ["https://pygraphviz.github.io/documentation/stable/", null],
   "pymde": ["https://pymde.org/", null],
   "pymongo": ["https://pymongo.readthedocs.io/en/stable/", null],
+  "pynput": ["https://pynput.readthedocs.io/en/stable/", null],
   "pynsist": ["https://pynsist.readthedocs.io/en/latest/", null],
   "pyodide": ["https://pyodide.org/en/stable/", null],
   "pypa": ["https://www.pypa.io/en/latest/", null],
