@@ -54,6 +54,7 @@
   "jupyterbook": ["https://jupyterbook.org/en/stable/", null],
   "jupyterclient": ["https://jupyter-client.readthedocs.io/en/latest/", null],
   "jupytercore": ["https://jupyter-core.readthedocs.io/en/latest/", null],
+  "jupyterlite": ["https://jupyterlite.readthedocs.io/en/stable/", null],
   "jupytext": ["https://jupytext.readthedocs.io/en/stable/", null],
   "kwarray": ["https://kwarray.readthedocs.io/en/latest/", null],
   "kwimage": ["https://kwimage.readthedocs.io/en/latest/", null],
