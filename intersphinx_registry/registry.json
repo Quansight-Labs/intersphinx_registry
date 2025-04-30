@@ -95,6 +95,7 @@
   "openstack": ["https://docs.openstack.org/glance/latest/", null],
   "pandas": ["https://pandas.pydata.org/docs/", null],
   "pandas-gbq": ["https://pandas-gbq.readthedocs.io/en/latest/", null],
+  "paramiko": ["https://www.paramiko.org/", null],
   "parso": ["https://parso.readthedocs.io/en/latest/", null],
   "patsy": ["https://patsy.readthedocs.io/en/latest/", null],
   "pillow": ["https://pillow.readthedocs.io/en/stable/", null],
