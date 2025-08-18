@@ -128,7 +128,7 @@
   "pytorch_lightning": ["https://lightning.ai/docs/pytorch/stable/", null],
   "pyvista": ["https://docs.pyvista.org/", null],
   "qiskit": ["https://docs.quantum.ibm.com/api/qiskit/", null],
-  "qtconsole": ["https://jupyter.org/qtconsole/dev/", null],
+  "qtconsole": ["https://qtconsole.readthedocs.io/en/stable/", null],
   "readthedocs": ["https://docs.readthedocs.io/en/stable/", null],
   "referencing": ["https://referencing.readthedocs.io/en/stable/", null],
   "requests": ["https://docs.python-requests.org/en/latest/", null],
