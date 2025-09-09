@@ -58,11 +58,11 @@ jobs:
           pip install mypy sphinx
           pip install pytest-reportlog
 
+      - run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+
       - name: Test
         id: pytest
         run: pytest tests --report-log pytest-log.jsonl
-
-      - run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
       - uses: scientific-python/issue-from-pytest-log-action@f94477e45ef40e4403d7585ba639a9a3bcc53d43  # v1.3.0
         if: |
