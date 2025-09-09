@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
@@ -26,8 +29,7 @@ jobs:
           pip install pip --upgrade
           pip install -ve '.[tests]'
           pip install mypy sphinx sphobjinv aiohttp
-      - run:
-          mypy
+      - run: mypy
 
   pytest:
     needs: [style]
@@ -35,29 +37,34 @@ jobs:
     defaults:
       run:
         shell: bash -el {0}
+    permissions:
+      contents: read
+      issues: write
     strategy:
       matrix:
         os: ["ubuntu-latest"]
         python: ["3.x"]
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
       - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
       - run: |
           pip install pip --upgrade
           pip install -ve '.[tests]'
-          pip install mypy sphinx 
+          pip install mypy sphinx
           pip install pytest-reportlog
-
-      - name: Test
-        id: pytest
-        run:
-          pytest tests --report-log pytest-log.jsonl
 
       - run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
-      - uses: xarray-contrib/issue-from-pytest-log@v1.3.0
+      - name: Test
+        id: pytest
+        run: pytest tests --report-log pytest-log.jsonl
+
+      - uses: scientific-python/issue-from-pytest-log-action@f94477e45ef40e4403d7585ba639a9a3bcc53d43  # v1.3.0
         if: |
           failure()
           && steps.pytest.outcome == 'failure'
@@ -67,4 +74,3 @@ jobs:
           log-path: pytest-log.jsonl
           issue-title: ⚠️ CI failure at ${{ env.NOW }} ⚠️
           # issue-label: 'bug'
-
