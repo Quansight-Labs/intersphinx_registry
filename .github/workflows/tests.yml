@@ -64,7 +64,7 @@ jobs:
         id: pytest
         run: pytest tests --report-log pytest-log.jsonl
 
-      - uses: scientific-python/issue-from-pytest-log-action@f94477e45ef40e4403d7585ba639a9a3bcc53d43  # v1.3.0
+      - uses: scientific-python/issue-from-pytest-log-action@558a3dfdd251069b328d3fded994824ddbefc47b  # v1.4.0
         if: |
           failure()
           && steps.pytest.outcome == 'failure'
