@@ -15,17 +15,22 @@ CLICK_WRONG_301 = 301
 @pytest.mark.parametrize("key", sorted(keys - {"jinja"}))
 def test_format(key: str):
     assert isinstance(key, str)
+    session = requests.Session()
+    adapter = requests.adapters.HTTPAdapter(max_retries=1)
+    session.mount("https://", adapter)
     url, obj = MAPPING[key]
     assert url.startswith("https://"), url
     assert "readthedocs.org" not in url, "should be readthedocs.io not org"
 
     if obj is None:
-        requests.head(urljoin(url, "objects.inv"), allow_redirects=True).raise_for_status()
+        session.head(
+            urljoin(url, "objects.inv"), allow_redirects=True
+        ).raise_for_status()
     else:
         assert obj.startswith("https://"), obj
         assert "readthedocs.org" not in obj
         assert obj.startswith(url)
-        res = requests.head(obj, allow_redirects=True, timeout=TIMEOUT)
+        res = session.head(obj, allow_redirects=True, timeout=TIMEOUT)
         res.raise_for_status()
         assert res.status_code in (200, 302, CLICK_WRONG_301)
 
@@ -33,7 +38,9 @@ def test_format(key: str):
 @pytest.mark.parametrize("key", sorted(keys))
 def test_url_end_in_slash(key: str):
     url, obj = MAPPING[key]
-    assert url.endswith('/'), 'base url should generally ends with / (you can request an exception)'
+    assert url.endswith("/"), (
+        "base url should generally ends with / (you can request an exception)"
+    )
 
 
 @pytest.mark.parametrize("key", list(sorted(keys)))
