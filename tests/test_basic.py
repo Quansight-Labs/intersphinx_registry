@@ -17,7 +17,7 @@ def test_format(key: str):
     assert isinstance(key, str)
     session = requests.Session()
     adapter = requests.adapters.HTTPAdapter(max_retries=1)
-    session.mount("https://", a)
+    session.mount("https://", adapter)
     url, obj = MAPPING[key]
     assert url.startswith("https://"), url
     assert "readthedocs.org" not in url, "should be readthedocs.io not org"
