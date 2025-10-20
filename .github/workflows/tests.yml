@@ -9,7 +9,7 @@ on:  # yamllint disable-line rule:truthy
     branches: ["main"]
   # Run at 04:00 UTC every Monday
   schedule:
-    - cron: "0 4 * * 1"
+    - cron: "23 4 * * 1"
 
 permissions:
   contents: read
