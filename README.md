@@ -63,7 +63,7 @@ std:label non-uniform-random-number-sampling SciPy 1.14.1 'Universal Non-Uniform
 std:doc   tutorial/stats/sampling            SciPy 1.14.1 'Universal Non-Uniform Random Number Sampling in SciPy' https://docs.scipy.org/doc/scipy/tutorial/stats/sampling.html
 ```
 
-> ![WARNING]
+> [!WARNING]
 > There is no cache; the lookup command downloads the inventory of each mentioned package every time.
 
 You can also use the lookup functionality via the module interface:
