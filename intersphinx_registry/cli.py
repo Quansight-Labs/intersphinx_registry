@@ -25,7 +25,7 @@ def main():
     )
 
     parser.add_argument(
-        '--version',
+        '-v', '--version',
         action='version',
         version=f'intersphinx-registry {__version__}'
     )
