@@ -9,6 +9,7 @@ license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 readme = "README.md"
+dependencies = ["sphinx", "requests"]
 
 [project.optional-dependencies]
 tests = ["pytest>=7.0", "pytest-xdist", "requests", "mypy", "types-requests"]
