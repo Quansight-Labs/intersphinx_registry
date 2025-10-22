@@ -1,11 +1,40 @@
 import sys
-from urllib.parse import urljoin
 from typing import Optional
-from sphinx.util.inventory import InventoryFile
-from io import BytesIO
-import requests
 
 from . import get_intersphinx_mapping
+
+
+def _check_cli_dependencies():
+    """
+    Check if CLI dependencies are available.
+
+    Raises SystemExit with helpful message if dependencies are missing.
+    """
+    missing = []
+
+    import importlib.util
+
+    missing = []
+    try:
+        import sphinx  # noqa: F401
+        import requests  # noqa: F401
+    except ImportError:
+        if importlib.util.find_spec("sphinx") is None:
+            missing.append("sphinx")
+        if importlib.util.find_spec("requests") is None:
+            missing.append("requests")
+
+    if missing:
+        print(
+            "Error: the lookup functionality requires additional dependencies.",
+            file=sys.stderr,
+        )
+        print(
+            "Please install with: pip install intersphinx_registry[cli]",
+            file=sys.stderr,
+        )
+        print(f"\nMissing: {', '.join(missing)}", file=sys.stderr)
+        sys.exit(1)
 
 
 def lookup_packages(packages_str: str, search_term: Optional[str] = None):
@@ -19,6 +48,13 @@ def lookup_packages(packages_str: str, search_term: Optional[str] = None):
     search_term : str, optional
         Search term to filter results
     """
+    _check_cli_dependencies()
+
+    from urllib.parse import urljoin
+    from sphinx.util.inventory import InventoryFile
+    from io import BytesIO
+    import requests
+
     packages = set(packages_str.split(","))
 
     # there will be only one url
