@@ -27,7 +27,10 @@ def main():
     )
 
     parser.add_argument(
-        "--version", action="version", version=f"intersphinx-registry {__version__}"
+        "-v",
+        "--version",
+        action="version",
+        version=f"intersphinx-registry {__version__}",
     )
 
     subparsers = parser.add_subparsers(
