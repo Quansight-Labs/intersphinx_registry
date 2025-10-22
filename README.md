@@ -2,7 +2,27 @@
 
 A simple utility package that provides a default intersphinx mapping for a large chunk of the Python ecosystem.
 
-Usage in `conf.py`
+## Installation
+
+```bash
+# Core package only (for use in conf.py/Sphinx projects)
+pip install intersphinx_registry
+
+# With a command-line interface
+pip install intersphinx_registry[cli]
+# or
+uv tool install intersphinx_registry[cli]
+# or
+pipx install intersphinx_registry[cli]
+```
+
+You can also use it without installation:
+
+```bash
+uvx intersphinx-registry[cli] lookup numpy,scipy array
+```
+
+## Usage in `conf.py`
 
 ```python
 from intersphinx_registry import get_intersphinx_mapping
@@ -13,13 +33,16 @@ intersphinx_mapping = get_intersphinx_mapping(
 )
 intersphinx_mapping.update({
     'overwrite': ('<url>', None),
-    'my-package' : ('<url>', None),
+    'my-package': ('<url>', None),
 })
 ```
 
 ## Command-line interface
 
 The package provides a command-line interface for looking up intersphinx targets.
+
+> [!NOTE]
+> The CLI requires installing the `[cli]` extra: `pip install intersphinx_registry[cli]`
 
 ```bash
 $ intersphinx-registry --version
