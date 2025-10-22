@@ -4,7 +4,9 @@ from intersphinx_registry import __version__
 
 
 def lookup_command(args):
-    from intersphinx_registry.lookup import lookup_packages
+    from intersphinx_registry.lookup import _check_cli_dependencies, lookup_packages
+
+    _check_cli_dependencies()
 
     if not args.packages:
         print("Usage: intersphinx-registry lookup <package>[,package] [search_term]")
@@ -19,41 +21,39 @@ def lookup_command(args):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog='intersphinx-registry',
-        description='Default intersphinx mapping for the Python ecosystem',
-        epilog='For more information, see: https://github.com/Quansight-labs/intersphinx_registry'
+        prog="intersphinx-registry",
+        description="Default intersphinx mapping for the Python ecosystem",
+        epilog="For more information, see: https://github.com/Quansight-labs/intersphinx_registry",
     )
 
     parser.add_argument(
-        '-v', '--version',
-        action='version',
-        version=f'intersphinx-registry {__version__}'
+        "--version", action="version", version=f"intersphinx-registry {__version__}"
     )
 
     subparsers = parser.add_subparsers(
-        title='subcommands',
-        description='available subcommands',
-        dest='subcommand',
-        help='subcommand help'
+        title="subcommands",
+        description="available subcommands",
+        dest="subcommand",
+        help="subcommand help",
     )
 
     # Lookup subcommand
     lookup_parser = subparsers.add_parser(
-        'lookup',
-        help='Search and lookup intersphinx targets/webpages',
-        description='Search intersphinx inventories for documentation targets'
+        "lookup",
+        help="Search and lookup intersphinx targets/webpages",
+        description="Search intersphinx inventories for documentation targets",
     )
     lookup_parser.add_argument(
-        'packages',
-        nargs='?',
+        "packages",
+        nargs="?",
         default=None,
-        help='Comma-separated list of package names (e.g., numpy,scipy)'
+        help="Comma-separated list of package names (e.g., numpy,scipy)",
     )
     lookup_parser.add_argument(
-        'search_term',
-        nargs='?',
+        "search_term",
+        nargs="?",
         default=None,
-        help='Optional search term to filter results'
+        help="Optional search term to filter results",
     )
     lookup_parser.set_defaults(func=lookup_command)
 
@@ -65,5 +65,6 @@ def main():
 
     args.func(args)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
