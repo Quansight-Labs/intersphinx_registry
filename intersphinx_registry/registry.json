@@ -155,7 +155,7 @@
   "rtd": ["https://docs.readthedocs.io/en/stable/", null],
   "rtd-dev": ["https://dev.readthedocs.io/en/latest/", null],
   "scanpy": ["https://scanpy.readthedocs.io/en/stable/", null],
-  "scipy": ["https://scipy.github.io/devdocs/", null],
+  "scipy": ["https://docs.scipy.org/doc/scipy/", null],
   "scipy-lecture-notes": ["https://scipy-lectures.org/", null],
   "scriptconfig": ["https://scriptconfig.readthedocs.io/en/latest/", null],
   "seaborn": ["https://seaborn.pydata.org/", null],
