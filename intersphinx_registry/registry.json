@@ -179,7 +179,7 @@
   "statsmodels": ["https://www.statsmodels.org/stable/", null],
   "sympy": ["https://docs.sympy.org/latest/", null],
   "tljh": ["https://tljh.jupyter.org/en/latest/", null],
-  "torch": ["https://pytorch.org/docs/main/", null],
+  "torch": ["https://docs.pytorch.org/docs/main/", null],
   "tornado": ["https://www.tornadoweb.org/en/stable/", null],
   "tox": ["https://tox.wiki/en/stable/", null],
   "traitlets": ["https://traitlets.readthedocs.io/en/latest/", null],
