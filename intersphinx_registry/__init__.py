@@ -11,7 +11,7 @@ from typing import Dict, Tuple, Set, Optional, cast
 # See issue 4, we this the best format is Major.YYMM.day,
 # in case of multiple releases a day we can borrow the next day's date.
 # no 0 in front of the day as it is not pep440 compliant.
-version_info = (0, 2510, 17)
+version_info = (0, 2511, 7)
 __version__ = ".".join(map(str, version_info))
 
 registry_file = Path(__file__).parent / "registry.json"
