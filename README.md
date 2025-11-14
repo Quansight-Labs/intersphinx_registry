@@ -1,8 +1,28 @@
 # Intersphinx Registry
 
-A simple utility package that provide default inter sphinx mapping for a large chunk of the python ecosystem.
+A simple utility package that provides a default intersphinx mapping for a large chunk of the Python ecosystem.
 
-Usage in `conf.py`
+## Installation
+
+```bash
+# Core package only (for use in conf.py/Sphinx projects)
+pip install intersphinx_registry
+
+# With a command-line interface
+pip install intersphinx_registry[cli]
+# or
+uv tool install intersphinx_registry[cli]
+# or
+pipx install intersphinx_registry[cli]
+```
+
+You can also use it without installation:
+
+```bash
+uvx intersphinx-registry[cli] lookup numpy,scipy array
+```
+
+## Usage in `conf.py`
 
 ```python
 from intersphinx_registry import get_intersphinx_mapping
@@ -13,32 +33,50 @@ intersphinx_mapping = get_intersphinx_mapping(
 )
 intersphinx_mapping.update({
     'overwrite': ('<url>', None),
-    'my-package' : ('<url>', None),
+    'my-package': ('<url>', None),
 })
 ```
 
-## quick lookup
+## Command-line interface
 
-You can use the following to lookup target/webpages of various packages.
+The package provides a command-line interface for looking up intersphinx targets.
+
+> [!NOTE]
+> The CLI requires installing the `[cli]` extra: `pip install intersphinx_registry[cli]`
+
+```bash
+$ intersphinx-registry --version
+# or
+$ intersphinx-registry -v
+```
+
+### quick lookup
+
+You can use the lookup command to search for intersphinx targets and webpages across various packages.
 
 Call without arguments to get help:
 
-```
-$ python -m intersphinx_registry.lookup
-
-    Usage: python -m intersphinx_registry.lookup <package>[,package] [search_term]
-
-    Example:
-
-    $ python -m intersphinx_registry.lookup numpy,scipy array
-    $ python -m intersphinx_registry.lookup ipython formatters.html
-
+```bash
+$ intersphinx-registry lookup
 ```
 
-You can search multiple packages as once.
+Basic usage:
 
+```bash
+$ intersphinx-registry lookup <package>[,package] [search_term]
 ```
-$ python -m intersphinx_registry.lookup numpy,scipy Universal
+
+Examples:
+
+```bash
+$ intersphinx-registry lookup numpy,scipy array
+$ intersphinx-registry lookup ipython formatters.html
+```
+
+You can search multiple packages at once:
+
+```bash
+$ intersphinx-registry lookup numpy,scipy Universal
 std:label ufuncs                             NumPy 2.1    'Universal functions (ufunc)'                         https://numpy.org/doc/stable/reference/ufuncs.html#ufuncs
 std:label ufuncs-basics                      NumPy 2.1    'Universal functions (ufunc) basics'                  https://numpy.org/doc/stable/user/basics.ufuncs.html#ufuncs-basics
 std:label ufuncs-internals                   NumPy 2.1    'Universal functions'                                 https://numpy.org/doc/stable/dev/internals.code-explanations.html#ufuncs-internals
@@ -48,13 +86,19 @@ std:label non-uniform-random-number-sampling SciPy 1.14.1 'Universal Non-Uniform
 std:doc   tutorial/stats/sampling            SciPy 1.14.1 'Universal Non-Uniform Random Number Sampling in SciPy' https://docs.scipy.org/doc/scipy/tutorial/stats/sampling.html
 ```
 
-Warning, there is no cache, it downloads the inventory of each mentioned package every time.
+> [!WARNING]
+> There is no cache; the lookup command downloads the inventory of each mentioned package every time.
 
+You can also use the lookup functionality via the module interface:
+
+```bash
+$ python -m intersphinx_registry.lookup <package>[,package] [search_term]
+```
 
 ## Why ?
 
-Sometime packages docs move and it's hard to keep track of. We _try_ to keep the
-registry up to date, so yo do not have to ask yourself questions and update your
+Sometimes, packages docs move and it's hard to keep track of them. We _try_ to keep the
+registry up to date, so you do not have to ask yourself questions and update your
 intersphinx-mapping.
 
 You also might not want to think about adding intersphinx mapping when you refer
