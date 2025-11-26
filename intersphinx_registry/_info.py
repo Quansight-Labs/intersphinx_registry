@@ -2,7 +2,7 @@
 Experimental, print info about all (or a subset of), all the known inventories.
 
 As this is likely to make _many_ concurrent connections;
-we use aoihttp and sphobjinv which are not listed as dependencies.
+we use aiohttp and sphobjinv which are not listed as dependencies.
 """
 
 import asyncio
