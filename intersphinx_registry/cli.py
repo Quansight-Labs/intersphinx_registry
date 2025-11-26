@@ -10,8 +10,7 @@ def lookup_command(args):
         sys.exit(1)
 
     if not args.packages:
-        print("Usage: intersphinx-registry lookup <package>[,package] [search_term]")
-        print()
+        print("Usage: intersphinx-registry lookup <package>[,package] [search_term]\n")
         print("Examples:")
         print("  intersphinx-registry lookup numpy,scipy array")
         print("  intersphinx-registry lookup ipython formatters.html")
