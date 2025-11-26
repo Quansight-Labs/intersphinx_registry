@@ -18,7 +18,7 @@ def _check_cli_dependencies():
     try:
         import sphinx  # noqa: F401
         import requests  # noqa: F401
-    except ImportError:
+    except ModuleNotFoundError:
         if importlib.util.find_spec("sphinx") is None:
             missing.append("sphinx")
         if importlib.util.find_spec("requests") is None:
