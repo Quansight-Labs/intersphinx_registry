@@ -11,7 +11,12 @@ dynamic = ["version", "description"]
 readme = "README.md"
 
 [project.optional-dependencies]
-tests = ["pytest>=7.0", "pytest-xdist", "requests", "mypy", "types-requests"]
+tests = ["pytest>=7.0", "pytest-xdist", "mypy", "types-requests"]
+lookup = ["sphinx", "requests"]
+cli = ["intersphinx_registry[lookup]"]
+
+[project.scripts]
+intersphinx-registry = "intersphinx_registry.cli:main"
 
 [tool.pytest.ini_options]
 minversion = "7.0"

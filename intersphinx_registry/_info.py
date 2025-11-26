@@ -1,8 +1,8 @@
 """
 Experimental, print info about all (or a subset of), all the known inventories.
 
-As this is likely to make _many_ concurrent connections; 
-we use aoihttp and sphobjinv which are not listed as dependencies.
+As this is likely to make _many_ concurrent connections;
+we use aiohttp and sphobjinv which are not listed as dependencies.
 """
 
 import asyncio
@@ -66,7 +66,7 @@ for key, base_url, data in results:
     flattened.append((key, base_url, inv.project, inv.version, inv.count))
 
 if not flattened:
-    sys.exit("Could not reach any pacakges")
+    sys.exit("Could not reach any packages")
 width = [len(x) for x in flattened[0][:-1]]
 
 for item in flattened:
