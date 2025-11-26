@@ -9,9 +9,6 @@ def _are_dependencies_available() -> bool:
     Check if CLI dependencies are missing or not.
     Returns True if all dependencies are available, False otherwise.
     """
-
-    import importlib.util
-
     missing = []
     try:
         import sphinx  # noqa: F401
