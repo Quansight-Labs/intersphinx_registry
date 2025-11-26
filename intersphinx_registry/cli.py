@@ -4,9 +4,10 @@ from intersphinx_registry import __version__
 
 
 def lookup_command(args):
-    from intersphinx_registry.lookup import _check_cli_dependencies, lookup_packages
+    from intersphinx_registry.lookup import _are_dependencies_available, lookup_packages
 
-    _check_cli_dependencies()
+    if not _are_dependencies_available():
+        sys.exit(1)
 
     if not args.packages:
         print("Usage: intersphinx-registry lookup <package>[,package] [search_term]")
