@@ -12,9 +12,12 @@ def _are_dependencies_available() -> bool:
     missing = []
     try:
         import sphinx  # noqa: F401
-        import requests  # noqa: F401
     except ModuleNotFoundError:
         missing.append("sphinx")
+
+    try:
+        import requests  # noqa: F401
+    except ModuleNotFoundError:
         missing.append("requests")
 
     if missing:
