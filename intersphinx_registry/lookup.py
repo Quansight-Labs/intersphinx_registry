@@ -29,7 +29,7 @@ def _are_dependencies_available() -> bool:
             "Please install with: pip install 'intersphinx_registry[cli]'",
             file=sys.stderr,
         )
-        print(f"\nMissing dependencies: {', '.join(missing)}", file=sys.stderr)
+        print(f"Missing dependencies: {', '.join(missing)}", file=sys.stderr)
         return False
 
     return True
