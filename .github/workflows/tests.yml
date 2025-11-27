@@ -1,8 +1,8 @@
-name: 'Tests'
+name: "Tests"
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number }}-${{ github.event.ref }}
   cancel-in-progress: true
-on:  # yamllint disable-line rule:truthy
+on: # yamllint disable-line rule:truthy
   push:
     branches: ["main"]
   pull_request:
@@ -17,6 +17,7 @@ permissions:
 
 jobs:
   style:
+    name: Code style
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -25,7 +26,7 @@ jobs:
 
       - uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - run: |
           pip install pip --upgrade
           pip install -ve '.[tests]'
@@ -33,6 +34,7 @@ jobs:
       - run: mypy
 
   pytest:
+    name: Test on ${{ matrix.os }} with Python ${{ matrix.python }}
     needs: [style]
     runs-on: ${{ matrix.os }}
     defaults:
@@ -40,7 +42,7 @@ jobs:
         shell: bash -el {0}
     permissions:
       contents: read
-      issues: write
+      issues: write # to create issues on test failures
     strategy:
       matrix:
         os: ["ubuntu-latest"]
@@ -65,7 +67,7 @@ jobs:
         id: pytest
         run: pytest tests --report-log pytest-log.jsonl
 
-      - uses: scientific-python/issue-from-pytest-log-action@558a3dfdd251069b328d3fded994824ddbefc47b  # v1.4.0
+      - uses: scientific-python/issue-from-pytest-log-action@558a3dfdd251069b328d3fded994824ddbefc47b # v1.4.0
         if: |
           failure()
           && steps.pytest.outcome == 'failure'
