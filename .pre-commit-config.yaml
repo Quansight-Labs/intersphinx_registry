@@ -1,0 +1,48 @@
+ci:
+  autoupdate_schedule: "quarterly"
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v5.0.0"
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.14.6"
+    hooks:
+      - id: ruff
+        args: ["--fix", "--show-fixes"]
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: "v3.21.2"
+    hooks:
+      - id: pyupgrade
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.4.1"
+    hooks:
+      - id: codespell
+
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: "v3.6.2"
+    hooks:
+      - id: prettier
+        files: \.(html|md|toml|yml|yaml)
+        args: ["--prose-wrap=preserve"]
+
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.16.2
+    hooks:
+      - id: zizmor
+        args: ["--pedantic", "--fix=safe"]
