@@ -12,7 +12,7 @@ readme = "README.md"
 
 [project.optional-dependencies]
 tests = ["pytest>=7.0", "pytest-xdist", "mypy", "types-requests"]
-lookup = ["sphinx", "requests"]
+lookup = ["sphinx", "requests", "requests-cache"]
 cli = ["intersphinx_registry[lookup]"]
 
 [project.scripts]
