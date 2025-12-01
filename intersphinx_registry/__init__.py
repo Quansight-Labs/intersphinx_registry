@@ -16,6 +16,7 @@ __version__ = ".".join(map(str, version_info))
 
 registry_file = Path(__file__).parent / "registry.json"
 
+
 def _get_all_mappings() -> dict[str, tuple[str, str | None]]:
     return cast(
         dict[str, Tuple[str, Optional[str]]],
@@ -43,10 +44,14 @@ def get_intersphinx_mapping(
 
     """
     if len(packages) == 0:
-        raise ValueError('You must explicitly give a list of packages for which to download intersphinx inventories: get_intersphinx_mapping(packages=["IPython", "numpy",...]).')
+        raise ValueError(
+            'You must explicitly give a list of packages for which to download intersphinx inventories: get_intersphinx_mapping(packages=["IPython", "numpy",...]).'
+        )
 
     mapping = _get_all_mappings()
     missing = set(packages) - set(mapping)
     if missing:
-        raise ValueError(f"Some libraries in 'packages' not found in registry: {repr(sorted(missing))}")
+        raise ValueError(
+            f"Some libraries in 'packages' not found in registry: {repr(sorted(missing))}"
+        )
     return {k: v for k, v in mapping.items() if k in packages}

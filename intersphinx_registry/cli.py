@@ -28,8 +28,12 @@ def reverse_lookup_command(args):
     if not args.urls:
         print("Usage: intersphinx-registry reverse-lookup <url> [url ...]\n")
         print("Examples:")
-        print("  intersphinx-registry reverse-lookup https://numpy.org/doc/stable/reference/arrays.html")
-        print("  intersphinx-registry reverse-lookup https://docs.python.org/3/ https://numpy.org/doc/stable/")
+        print(
+            "  intersphinx-registry reverse-lookup https://numpy.org/doc/stable/reference/arrays.html"
+        )
+        print(
+            "  intersphinx-registry reverse-lookup https://docs.python.org/3/ https://numpy.org/doc/stable/"
+        )
         sys.exit(0)
 
     reverse_lookup(args.urls)

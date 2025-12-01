@@ -76,5 +76,5 @@ for item in flattened:
 for key, url, proj, version, count in flattened:
     w_key, w_url, w_proj, w_version = width
     print(
-        f"{key:<{w_key}}  {proj!r:<{w_proj+2}} {version:<{w_version}} {count:<5} {url:<{w_url}}"
+        f"{key:<{w_key}}  {proj!r:<{w_proj + 2}} {version:<{w_version}} {count:<5} {url:<{w_url}}"
     )

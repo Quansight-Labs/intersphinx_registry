@@ -122,8 +122,8 @@ def clear_cache() -> None:
     import requests_cache
 
     cache = requests_cache.CachedSession(
-        'intersphinx_cache',
-        backend='filesystem',
+        "intersphinx_cache",
+        backend="filesystem",
         use_cache_dir=True,
     )
     cache.cache.clear()
@@ -187,8 +187,8 @@ def lookup_packages(packages_str: str, search_term: Optional[str] = None):
     packages = set(packages_str.split(","))
 
     requests_cache.install_cache(
-        'intersphinx_cache',
-        backend='filesystem',
+        "intersphinx_cache",
+        backend="filesystem",
         expire_after=timedelta(hours=6),
         use_cache_dir=True,
         stale_if_error=True,
