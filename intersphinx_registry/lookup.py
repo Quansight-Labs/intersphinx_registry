@@ -1,41 +1,85 @@
+import json
+import shutil
 import sys
+from io import BytesIO
+from pathlib import Path
 from typing import Optional
+from urllib.parse import urljoin
 
-from . import get_intersphinx_mapping
+import requests
+from sphinx.util.inventory import InventoryFile
+
+from . import __version__, get_intersphinx_mapping
+from .utils import (
+    _are_dependencies_available,
+    _compress_user_path,
+    _get_cache_dir,
+    _install_cache,
+)
 
 
-def _are_dependencies_available() -> bool:
+def clear_cache() -> None:
+    """Clear the intersphinx inventory cache for the current version."""
+    if not _are_dependencies_available():
+        return
+
+    cache_dir = _get_cache_dir()
+
+    if cache_dir.exists():
+        for item in cache_dir.iterdir():
+            try:
+                if item.is_file():
+                    item.unlink()
+                elif item.is_dir():
+                    shutil.rmtree(item)
+            except Exception as e:
+                print(f"Warning: Could not remove {item}: {e}")
+
+    print("Cache cleared successfully")
+
+
+def get_info() -> dict[str, str]:
     """
-    Check if CLI dependencies are missing or not.
-    Returns True if all dependencies are available, False otherwise.
+    Get information about the intersphinx-registry installation.
+
+    Returns
+    -------
+    dict[str, str]
+        Dictionary containing version and cache location
     """
-    missing = []
-    try:
-        import sphinx  # noqa: F401
-    except ModuleNotFoundError:
-        missing.append("sphinx")
+    info = {
+        "version": __version__,
+    }
 
     try:
-        import requests  # noqa: F401
-    except ModuleNotFoundError:
-        missing.append("requests")
+        cache_dir = _get_cache_dir()
+        info["cache_location"] = str(cache_dir)
+    except Exception:
+        info["cache_location"] = "N/A (dependencies not installed)"
 
-    if missing:
-        print(
-            "ERROR: the lookup functionality requires additional dependencies.",
-            file=sys.stderr,
-        )
-        print(
-            "Please install with: pip install 'intersphinx_registry[cli]'",
-            file=sys.stderr,
-        )
-        print(f"Missing dependencies: {', '.join(missing)}", file=sys.stderr)
-        return False
-
-    return True
+    return info
 
 
-def lookup_packages(packages_str: str, search_term: Optional[str] = None):
+def print_info() -> None:
+    """Print information about the intersphinx-registry installation."""
+    info = get_info()
+
+    cache_location = _compress_user_path(info["cache_location"])
+
+    print("Intersphinx Registry Information")
+    print("=" * 50)
+    print(f"Version:               {info['version']}")
+    print(f"Cache location:        {cache_location}")
+
+    try:
+        registry_file_path = Path(__file__).parent / "registry.json"
+        registry = json.loads(registry_file_path.read_bytes())
+        print(f"Packages in registry:  {len(registry)}")
+    except Exception as e:
+        print(f"Packages in registry:  Error reading registry ({e})")
+
+
+def lookup_packages(packages_str: str, search_term: Optional[str] = None) -> None:
     """
     Look up intersphinx targets for specified packages.
 
@@ -49,39 +93,50 @@ def lookup_packages(packages_str: str, search_term: Optional[str] = None):
     if not _are_dependencies_available():
         return
 
-    from urllib.parse import urljoin
-    from sphinx.util.inventory import InventoryFile
-    from io import BytesIO
-    import requests
-
     packages = set(packages_str.split(","))
 
-    # there will be only one url
+    _install_cache()
+
     urls = [
         (u[0], (u[1] if u[1] else "objects.inv"))
         for u in get_intersphinx_mapping(packages=packages).values()
     ]
 
-    flattened = []
+    flattened: list[tuple[str, str, str, str, str, str]] = []
     for base_url, obj in urls:
         final_url = urljoin(base_url, obj)
 
-        resp = requests.get(final_url)
-
-        inv = InventoryFile.load(BytesIO(resp.content), base_url, urljoin)
+        try:
+            resp = requests.get(final_url, timeout=30)
+            resp.raise_for_status()
+            inv = InventoryFile.load(BytesIO(resp.content), base_url, urljoin)
+        except requests.RequestException as e:
+            print(f"Warning: Failed to fetch {final_url}: {e}", file=sys.stderr)
+            continue
+        except Exception as e:
+            print(
+                f"Warning: Failed to load inventory from {final_url}: {e}",
+                file=sys.stderr,
+            )
+            continue
 
         for key, v in inv.items():
             inv_entries = sorted(v.items())
-            for entry, (_proj, _ver, url_path, display_name) in inv_entries:
-                # display_name = display_name * (display_name != '-')
-                flattened.append((key, entry, _proj, _ver, display_name, url_path))
+            for entry, item in inv_entries:
+                flattened.append(
+                    (
+                        key,
+                        entry,
+                        item.project_name,
+                        item.project_version,
+                        item.display_name,
+                        item.uri,
+                    )
+                )
 
-    filtered = []
-
-    width = [len(x) for x in flattened[0]]
-
-    for item in flattened:
-        key, entry, proj, version, display_name, url_path = item
+    filtered: list[tuple[str, str, str, str, str, str]] = []
+    for item_tuple in flattened:
+        key, entry, proj, version, display_name, url_path = item_tuple
         if (
             (search_term is None)
             or (search_term in entry)
@@ -89,7 +144,14 @@ def lookup_packages(packages_str: str, search_term: Optional[str] = None):
             or (search_term in url_path)
         ):
             filtered.append((key, entry, proj, version, display_name, url_path))
-            width = [max(w, len(x)) for w, x in zip(width, item)]
+
+    if not filtered:
+        return
+
+    width = [0] * 6
+    for item_tuple in filtered:
+        for i, x in enumerate(item_tuple):
+            width[i] = max(width[i], len(str(x)))
 
     for key, entry, proj, version, display_name, url_path in filtered:
         w_key, w_entry, w_proj, w_version, w_di, w_url = width
