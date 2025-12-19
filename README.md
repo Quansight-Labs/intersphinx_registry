@@ -95,6 +95,40 @@ You can also use the lookup functionality via the module interface:
 $ python -m intersphinx_registry.lookup <package>[,package] [search_term]
 ```
 
+### reverse-lookup
+
+Find which package a documentation URL belongs to and get its Sphinx reference.
+
+```bash
+$ intersphinx-registry reverse-lookup <url> [url...]
+```
+
+Examples:
+
+```bash
+$ intersphinx-registry reverse-lookup https://numpy.org/doc/stable/reference/arrays.html
+$ intersphinx-registry reverse-lookup https://docs.python.org/3/ https://numpy.org/doc/stable/
+```
+
+This is useful when you have a link to documentation and want to know the corresponding Sphinx reference (`:domain:package:target`) that you can use in your own documentation with intersphinx.
+
+### rev-search
+
+Scan `.rst` files in a directory for hardcoded URLs and suggest replacements with Sphinx references.
+
+```bash
+$ intersphinx-registry rev-search <directory-or-file>
+```
+
+Examples:
+
+```bash
+$ intersphinx-registry rev-search docs/
+$ intersphinx-registry rev-search docs/index.rst
+```
+
+This command helps you convert hardcoded URLs in your reStructuredText documentation into proper intersphinx references. It scans your documentation files, finds URLs that match known packages in the registry, and shows you a diff-style output of the suggested changes.
+
 ## Why ?
 
 Sometimes, packages docs move and it's hard to keep track of them. We _try_ to keep the
