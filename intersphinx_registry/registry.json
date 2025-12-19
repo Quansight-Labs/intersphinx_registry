@@ -119,6 +119,7 @@
   "poliastro": ["https://docs.poliastro.space/en/stable/", null],
   "pooch": ["https://www.fatiando.org/pooch/latest/", null],
   "prompt_toolkit": ["https://python-prompt-toolkit.readthedocs.io/en/stable/", null],
+  "py-free-threading": ["https://py-free-threading.github.io/", null],
   "py": ["https://pylib.readthedocs.io/en/latest/", null],
   "pyarrow": ["https://arrow.apache.org/docs/", null],
   "pybaselines": ["https://pybaselines.readthedocs.io/en/stable/", null],
