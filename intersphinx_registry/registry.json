@@ -60,7 +60,7 @@
   "jupyter": ["https://docs.jupyter.org/en/latest/", null],
   "jupyter-server": ["https://jupyter-server.readthedocs.io/en/stable/", null],
   "jupyter_core": ["https://jupyter-core.readthedocs.io/en/stable/", null],
-  "jupyterbook": ["https://jupyterbook.org/en/stable/", null],
+  "jupyterbook": ["https://jupyterbook.org/stable/", null],
   "jupyterclient": ["https://jupyter-client.readthedocs.io/en/latest/", null],
   "jupytercore": ["https://jupyter-core.readthedocs.io/en/latest/", null],
   "jupyterlite": ["https://jupyterlite.readthedocs.io/en/stable/", null],
