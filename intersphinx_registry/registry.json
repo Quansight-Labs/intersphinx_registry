@@ -142,6 +142,7 @@
   "python": ["https://docs.python.org/3/", null],
   "python-guide": ["https://docs.python-guide.org/", null],
   "pytorch_lightning": ["https://lightning.ai/docs/pytorch/stable/", null],
+  "pyvisa": ["https://pyvisa.readthedocs.io/en/stable/", null],
   "pyvista": ["https://docs.pyvista.org/", null],
   "pyxem": ["https://www.pyxem.org/en/stable/", null],
   "qiskit": ["https://docs.quantum.ibm.com/api/qiskit/", null],
