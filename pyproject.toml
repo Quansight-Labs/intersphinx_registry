@@ -11,7 +11,7 @@ dynamic = ["version", "description"]
 readme = "README.md"
 
 [project.optional-dependencies]
-tests = ["pytest>=7.0", "pytest-xdist", "mypy", "types-requests",'intersphinx_registry[cli]']
+tests = ["pytest>=9.0.3", "pytest-xdist", "mypy", "types-requests",'intersphinx_registry[cli]']
 lookup = ["sphinx>=9.1.0", "requests", "requests-cache", "platformdirs"]
 cli = ["intersphinx_registry[lookup]"]
 
