@@ -134,7 +134,7 @@
   "pyodide": ["https://pyodide.org/en/stable/", null],
   "pypa": ["https://www.pypa.io/en/latest/", null],
   "pypug": ["https://packaging.python.org/en/latest/", null],
-  "pypy": ["https://doc.pypy.org/en/latest/", null],
+  "pypy": ["https://doc.pypy.org/", null],
   "pyqt": ["https://www.riverbankcomputing.com/static/Docs/PyQt5/", null],
   "pyqtgraph": ["https://pyqtgraph.readthedocs.io/en/latest/", null],
   "pyro": ["https://docs.pyro.ai/en/stable/", null],
