@@ -124,7 +124,7 @@
   "pyarrow": ["https://arrow.apache.org/docs/", null],
   "pybaselines": ["https://pybaselines.readthedocs.io/en/stable/", null],
   "pybind11": ["https://pybind11.readthedocs.io/en/stable/", null],
-  "pydantic": ["https://docs.pydantic.dev/latest/", null],
+  "pydantic": ["https://pydantic.dev/docs/validation/latest/", null],
   "pyerfa": ["https://pyerfa.readthedocs.io/en/stable/", null],
   "pygraphviz": ["https://pygraphviz.github.io/documentation/stable/", null],
   "pymde": ["https://pymde.org/", null],
