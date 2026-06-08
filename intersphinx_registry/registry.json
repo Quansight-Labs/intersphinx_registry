@@ -16,7 +16,6 @@
   "cffi": ["https://cffi.readthedocs.io/en/latest/", null],
   "click": ["https://click.palletsprojects.com/", null],
   "cloudpathlib": ["https://cloudpathlib.drivendata.org/stable/", null],
-  "commonmark": ["https://commonmarkpy.readthedocs.io/en/stable/", null],
   "conda": ["https://docs.conda.io/projects/conda/en/stable/", null],
   "conda-build": ["https://docs.conda.io/projects/conda-build/en/stable/", null],
   "configspace": ["https://automl.github.io/ConfigSpace/latest/", null],
