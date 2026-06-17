@@ -194,6 +194,7 @@
   "typing": ["https://typing.readthedocs.io/en/latest/", null],
   "typing_extensions": ["https://typing-extensions.readthedocs.io/en/stable/", null],
   "ubelt": ["https://ubelt.readthedocs.io/en/latest/", null],
+  "universal-pathlib": ["https://universal-pathlib.readthedocs.io/en/latest/", null],
   "uproot": ["https://uproot.readthedocs.io/en/stable/", null],
   "urwid": ["https://urwid.org/", null],
   "virtualenv": ["https://virtualenv.pypa.io/en/stable/", null],
