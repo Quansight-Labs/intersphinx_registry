@@ -143,7 +143,7 @@
   "pytorch_lightning": ["https://lightning.ai/docs/pytorch/stable/", null],
   "pyvisa": ["https://pyvisa.readthedocs.io/en/stable/", null],
   "pyvista": ["https://docs.pyvista.org/", null],
-  "pyxem": ["https://www.pyxem.org/en/stable/", null],
+  "pyxem": ["https://www.pyxem.org/v0.21.0/", null],
   "qiskit": ["https://docs.quantum.ibm.com/api/qiskit/", null],
   "qtconsole": ["https://qtconsole.readthedocs.io/en/stable/", null],
   "readthedocs": ["https://docs.readthedocs.io/en/stable/", null],
