@@ -141,6 +141,8 @@
   "pypug": ["https://packaging.python.org/en/latest/", null],
   "pypy": ["https://doc.pypy.org/", null],
   "pyqt": ["https://www.riverbankcomputing.com/static/Docs/PyQt5/", null],
+  "pyqt5": [ "https://www.riverbankcomputing.com/static/Docs/PyQt5/", null ],
+  "pyqt6": [ "https://www.riverbankcomputing.com/static/Docs/PyQt6/", null ],
   "pyqtgraph": ["https://pyqtgraph.readthedocs.io/en/latest/", null],
   "pyro": ["https://docs.pyro.ai/en/stable/", null],
   "pytest": ["https://pytest.org/en/stable/", null],
