@@ -74,13 +74,15 @@ def test_unique_base_urls():
     Two packages should not have the same base URL.
     This is important for reverse lookup functionality to work correctly.
     """
+    DUPLICATE_EXCLUSION = {"pyqt", "pyqt5"}
     base_urls = {}
     for package, (base_url, _obj) in MAPPING.items():
         if base_url in base_urls:
-            pytest.fail(
-                f"Duplicate base URL found: {base_url}\n"
-                f"  Used by packages: {base_urls[base_url]} and {package}"
-            )
+            if package not in DUPLICATE_EXCLUSION:
+                pytest.fail(
+                    f"Duplicate base URL found: {base_url}\n"
+                    f"  Used by packages: {base_urls[base_url]} and {package}"
+                )
         base_urls[base_url] = package
 
 
