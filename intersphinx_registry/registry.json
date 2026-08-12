@@ -67,7 +67,6 @@
   "jupyterclient": ["https://jupyter-client.readthedocs.io/en/latest/", null],
   "jupytercore": ["https://jupyter-core.readthedocs.io/en/latest/", null],
   "jupyterlite": ["https://jupyterlite.readthedocs.io/en/stable/", null],
-  "jupyterlite_core": ["https://jupyterlite.readthedocs.io/en/stable/", null],
   "jupytext": ["https://jupytext.readthedocs.io/en/stable/", null],
   "kikuchipy": ["https://kikuchipy.org/en/latest/", null],
   "kwarray": ["https://kwarray.readthedocs.io/en/latest/", null],
