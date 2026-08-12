@@ -80,7 +80,7 @@
   "matplotlib": ["https://matplotlib.org/stable/", null],
   "mdp": ["https://mdp-toolkit.github.io/", null],
   "meson-python": ["https://meson-python.readthedocs.io/en/stable/", null],
-  "micropip": ["https://micropip.pyodide.org/en/stable", null],
+  "micropip": ["https://micropip.pyodide.org/en/stable/", null],
   "mne": ["https://mne.tools/stable/", null],
   "mne_bids": ["https://mne.tools/mne-bids/stable/", null],
   "mne_icalabel": ["https://mne.tools/mne-icalabel/stable/", null],
