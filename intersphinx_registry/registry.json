@@ -169,7 +169,7 @@
   "scanpy": ["https://scanpy.readthedocs.io/en/stable/", null],
   "scikit-umfpack": ["https://scikit-umfpack.github.io/scikit-umfpack/", null],
   "scipy-lecture-notes": ["https://scipy-lectures.org/", null],
-  "scipy": ["https://docs.scipy.org/doc/scipy/", null],
+  "scipy": ["https://docs.scipy.org/doc/scipy/", "https://static.scipy.org/doc/scipy/objects.inv"],
   "scriptconfig": ["https://scriptconfig.readthedocs.io/en/latest/", null],
   "seaborn": ["https://seaborn.pydata.org/", null],
   "setuptools": ["https://setuptools.pypa.io/en/stable/", null],
