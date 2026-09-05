@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # to push the commit and tag
+    outputs:
+      version: ${{ steps.bump.outputs.version }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -64,3 +66,16 @@ jobs:
           echo "Dry run: not pushing. Would have pushed commit and tag ${{ steps.bump.outputs.version }}."
           git log -1
           git tag -l "${{ steps.bump.outputs.version }}"
+
+  publish:
+    # A push made with GITHUB_TOKEN does not trigger further workflows, so the
+    # tag push above never fires publish.yml's `on: push: tags`. Call it here.
+    name: Publish to PyPI
+    needs: bump-tag-push
+    if: ${{ !inputs.dry_run }}
+    uses: ./.github/workflows/publish.yml
+    with:
+      ref: ${{ needs.bump-tag-push.outputs.version }}
+    permissions:
+      contents: read
+      id-token: write # for trusted publishing to PyPI

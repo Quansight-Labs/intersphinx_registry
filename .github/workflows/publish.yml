@@ -3,7 +3,20 @@ name: "CD"
 on:
   push:
     tags:
-      - "*"
+      - "[0-9]*"
+  workflow_call:
+    inputs:
+      ref:
+        description: "Git ref (usually a tag) to build and publish"
+        type: string
+        required: true
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref (usually a tag) to build and publish"
+        type: string
+        required: true
+
 permissions:
   contents: read
 
@@ -23,6 +36,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          # On workflow_call, build the ref the caller just tagged. On a tag
+          # push, the default checkout is already that tag.
+          ref: ${{ inputs.ref || github.ref }}
           persist-credentials: false
 
       - name: Set up Python
