@@ -1,0 +1,66 @@
+name: "Release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run (bump/commit/tag locally but do not push)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "release"
+  cancel-in-progress: false
+
+jobs:
+  bump-tag-push:
+    name: Bump version, tag, and push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to push the commit and tag
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Compute next version
+        id: bump
+        run: |
+          version="$(python scripts/bump_version.py --dry-run --print-version)"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Fail if tag already exists
+        run: |
+          tag="${{ steps.bump.outputs.version }}"
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            echo "::error::Tag $tag already exists."
+            exit 1
+          fi
+
+      - name: Bump, commit, and tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python scripts/bump_version.py --version "${{ steps.bump.outputs.version }}"
+
+      - name: Show diff
+        run: git show --stat HEAD
+
+      - name: Push commit and tag
+        if: ${{ !inputs.dry_run }}
+        run: git push origin HEAD "${{ steps.bump.outputs.version }}"
+
+      - name: Dry run summary
+        if: ${{ inputs.dry_run }}
+        run: |
+          echo "Dry run: not pushing. Would have pushed commit and tag ${{ steps.bump.outputs.version }}."
+          git log -1
+          git tag -l "${{ steps.bump.outputs.version }}"
