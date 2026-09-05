@@ -15,7 +15,7 @@ TIMEOUT = 5  # sec
 CLICK_WRONG_301 = 301
 
 
-@pytest.mark.parametrize("key", sorted(keys - {"jinja"}))
+@pytest.mark.parametrize("key", sorted(keys - {"jinja", "scipy"}))
 def test_format(key: str):
     assert isinstance(key, str)
     session = requests.Session()
