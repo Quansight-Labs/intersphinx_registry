@@ -168,6 +168,7 @@
   "rst-to-myst": ["https://rst-to-myst.readthedocs.io/en/stable/", null],
   "rtd-dev": ["https://dev.readthedocs.io/en/latest/", null],
   "scanpy": ["https://scanpy.readthedocs.io/en/stable/", null],
+  "schemathesis": ["https://schemathesis.readthedocs.io/en/stable/", null],
   "scikit-umfpack": ["https://scikit-umfpack.github.io/scikit-umfpack/", null],
   "scipy-lecture-notes": ["https://scipy-lectures.org/", null],
   "scipy": ["https://docs.scipy.org/doc/scipy/", "https://static.scipy.org/doc/scipy/objects.inv"],
