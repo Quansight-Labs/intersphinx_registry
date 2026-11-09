@@ -37,6 +37,7 @@
   "django": ["https://docs.djangoproject.com/en/stable/", "https://docs.djangoproject.com/en/stable/_objects/"],
   "dlpack": ["https://dmlc.github.io/dlpack/latest/", null],
   "exspy": ["https://hyperspy.org/exspy/", null],
+  "fastapi": ["https://fastapi.tiangolo.com/", null],
   "fastjsonschema": ["https://horejsek.github.io/python-fastjsonschema/", null],
   "flax": ["https://flax.readthedocs.io/en/latest/", null],
   "flexx": ["https://flexx.readthedocs.io/en/latest/", null],
