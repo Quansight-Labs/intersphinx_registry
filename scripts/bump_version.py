@@ -5,6 +5,7 @@ Version format: ``Major.YYMM.day`` (see ``intersphinx_registry/__init__.py``).
 If the current version is already >= today's, the day is bumped past it
 ("borrow the next day's date" for multiple same-day releases).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -57,9 +58,13 @@ def run(cmd: list[str], dry: bool, log=sys.stdout) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--dry-run", action="store_true", help="show actions without changing anything")
+    ap.add_argument(
+        "--dry-run", action="store_true", help="show actions without changing anything"
+    )
     ap.add_argument("--no-tag", action="store_true", help="skip git tag")
-    ap.add_argument("--no-commit", action="store_true", help="skip git commit (and tag)")
+    ap.add_argument(
+        "--no-commit", action="store_true", help="skip git commit (and tag)"
+    )
     ap.add_argument(
         "--print-version",
         action="store_true",
