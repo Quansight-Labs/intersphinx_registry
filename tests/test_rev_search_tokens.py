@@ -6,8 +6,8 @@ import pytest
 
 from intersphinx_registry.rev_search import (
     Added,
-    ReplacementContext,
     Removed,
+    ReplacementContext,
     Unchanged,
     _compute_replacement,
     normalise_token_stream,

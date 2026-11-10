@@ -438,7 +438,7 @@ def process_one_file(rst_file: Path):
     all_lines = []
 
     try:
-        with open(rst_file, "r", encoding="utf-8") as f:
+        with open(rst_file, encoding="utf-8") as f:
             all_lines = f.readlines()
             for line_num, line in enumerate(all_lines, start=1):
                 urls = url_pattern.findall(line)
