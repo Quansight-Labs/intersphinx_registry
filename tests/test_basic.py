@@ -1,12 +1,12 @@
 import warnings
-from urllib.parse import urljoin
 
 import pytest
 import requests
+from linkcheck_proxy import known_ok
+from registry_urls import MAPPING, format_target, inv_targets
 
-from intersphinx_registry import _ALIASES, _get_all_mappings, get_intersphinx_mapping
+from intersphinx_registry import _ALIASES, get_intersphinx_mapping
 
-MAPPING = _get_all_mappings()
 keys = set(MAPPING)
 
 TIMEOUT = 5  # sec
@@ -14,25 +14,35 @@ TIMEOUT = 5  # sec
 # click does return a 301 instead of a 30
 CLICK_WRONG_301 = 301
 
+FORMAT_KEYS = sorted(keys - {"jinja", "scipy"})
 
-@pytest.mark.parametrize("key", sorted(keys - {"jinja", "scipy"}))
+# Network tests are only generated for URLs that link-check-proxy does not
+# already report as working (see linkcheck_proxy.py / conftest.py). Without
+# LCP_URL, that is all of them.
+FORMAT_LIVE = [k for k in FORMAT_KEYS if not known_ok(format_target(k))]
+INV_LIVE = [k for k in sorted(keys) if not all(map(known_ok, inv_targets(k)))]
+
+
+@pytest.mark.parametrize("key", FORMAT_KEYS)
 def test_format(key: str):
-    assert isinstance(key, str)
+    url, obj = MAPPING[key]
+    assert url.startswith("https://"), url
+    assert "readthedocs.org" not in url, "should be readthedocs.io not org"
+    if obj is not None:
+        assert obj.startswith("https://"), obj
+        assert "readthedocs.org" not in obj
+        assert obj.startswith(url)
+
+
+@pytest.mark.parametrize("key", FORMAT_LIVE)
+def test_format_reachable(key: str):
     session = requests.Session()
     adapter = requests.adapters.HTTPAdapter(max_retries=1)
     session.mount("https://", adapter)
     url, obj = MAPPING[key]
-    assert url.startswith("https://"), url
-    assert "readthedocs.org" not in url, "should be readthedocs.io not org"
-
     if obj is None:
-        session.head(
-            urljoin(url, "objects.inv"), allow_redirects=True
-        ).raise_for_status()
+        session.head(format_target(key), allow_redirects=True).raise_for_status()
     else:
-        assert obj.startswith("https://"), obj
-        assert "readthedocs.org" not in obj
-        assert obj.startswith(url)
         res = session.head(obj, allow_redirects=True, timeout=TIMEOUT)
         res.raise_for_status()
         assert res.status_code in (200, 302, CLICK_WRONG_301)
@@ -46,12 +56,12 @@ def test_url_end_in_slash(key: str):
     )
 
 
-@pytest.mark.parametrize("key", list(sorted(keys)))
+@pytest.mark.parametrize("key", INV_LIVE)
 def test_reach_objects_inv(key: str):
-    for v in MAPPING[key]:
-        if v is None:
+    for target in inv_targets(key):
+        if known_ok(target):
             continue
-        res = requests.head(urljoin(v, "objects.inv"), timeout=TIMEOUT)
+        res = requests.head(target, timeout=TIMEOUT)
         res.raise_for_status()
         assert res.status_code in (200, 302, CLICK_WRONG_301)
 

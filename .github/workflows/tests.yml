@@ -43,6 +43,7 @@ jobs:
     permissions:
       contents: read
       issues: write # to create issues on test failures
+      id-token: write # GitHub OIDC token for link-check-proxy (no secret needed)
     strategy:
       matrix:
         os: ["ubuntu-latest"]
@@ -65,6 +66,12 @@ jobs:
 
       - name: Test
         id: pytest
+        env:
+          # Shared link-status cache to avoid rate limits from doc hosts; see
+          # tests/linkcheck_proxy.py. Authenticates with a GitHub OIDC token
+          # (this repo is on the proxy's allowlist). Fork PRs get no token and
+          # use the public read-only snapshot; unknown URLs are checked live.
+          LCP_URL: https://link-check-proxy.carreau.workers.dev
         run: pytest tests --report-log pytest-log.jsonl
 
       - uses: scientific-python/issue-from-pytest-log-action@35b4e0a9e06f8e7e261778289cf4b968b722662d # v1.6.2
