@@ -21,6 +21,6 @@ echo "Version bumped to ${NEW_VERSION}"
 
 git add "$INIT_FILE"
 git commit -m "release ${NEW_VERSION}"
-git tag "${NEW_VERSION}"
+git tag -a "${NEW_VERSION}" -m "release ${NEW_VERSION}"  # annotated, so `git push --follow-tags` sends it
 
 echo "Committed and tagged ${NEW_VERSION}"
