@@ -11,7 +11,7 @@ dynamic = ["version", "description"]
 readme = "README.md"
 
 [project.optional-dependencies]
-tests = ["pytest>=9.0.3", "pytest-xdist", "mypy", "types-requests",'intersphinx_registry[cli]']
+tests = ["pytest>=9.0.3", "mypy", "types-requests",'intersphinx_registry[cli]']
 lookup = ["sphinx>=9.1.0", "requests", "requests-cache", "platformdirs"]
 cli = ["intersphinx_registry[lookup]"]
 
@@ -20,10 +20,10 @@ intersphinx-registry = "intersphinx_registry.cli:main"
 
 [tool.pytest.ini_options]
 minversion = "7.0"
-# -n auto:
-#    run @parametrize tests in parallel as some use requests.
-#    requires ptest x-dist
-addopts = ["-n", "auto", "--strict-config", "--strict-markers", "-ra", "--durations=10"]
+# Network tests are filtered through link-check-proxy (tests/conftest.py), so
+# few live requests remain and xdist is no longer needed. `-p no:asyncio`
+# silences pytest-asyncio's config deprecation when it happens to be installed.
+addopts = ["-p", "no:asyncio", "--strict-config", "--strict-markers", "-ra", "--durations=10"]
 filterwarnings = ["error"]
 log_cli_level = "INFO"
 testpaths = ["tests"]
